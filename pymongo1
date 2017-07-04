@@ -1,0 +1,5 @@
+import MongoClient
+import requests
+conn = pymongo.MongoClient('10.8.8.8',27017)
+db = conn.alus['videos']
+print(db)
