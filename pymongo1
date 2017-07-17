@@ -1,5 +1,66 @@
-import MongoClient
-import requests
-conn = pymongo.MongoClient('10.8.8.8',27017)
-db = conn.alus['videos']
-print(db)
+def mongodb():
+    import pymongo
+    import requests
+    conn = pymongo.MongoClient('10.8.8.8',27017)
+    db = conn.alus['videos']
+    print(db)
+    test1 = db.get_collection('videos')
+    # if test1 == None:
+    #     test = test1.append('queue')
+    #     print(test)
+    # else:
+    #     print(test1)
+def commit():
+    from selenium import webdriver
+    from time import sleep
+    driver = webdriver.Firefox()
+    driver.get('https://jinshuju.net/f/kRXoEv')
+    sleep(3)
+    print(driver.current_url)
+    driver.find_element_by_xpath("//i[contains(@data-value,'5')]").click()
+    driver.find_element_by_xpath("//form[@id='new_entry']/div[3]/div/div[1]/div[2]/div/div[2]/div/label[1]/div[1]/i").click()
+    # driver.find_element_by_id("entry_field_3").send_keys(u"坚持每周一次公开课")
+    driver.find_element_by_id("entry_field_3").send_keys("坚持每周一次公开课")
+    driver.find_element_by_id("entry_field_4").send_keys("XXX@qq.com")
+    driver.find_element_by_css_selector("[type='submit']").click()
+    print(driver.current_url)
+    driver.close()
+    sleep(8)
+    print('提交成功!')
+    driver.quit()
+def test():
+    from selenium import webdriver
+    from time import sleep
+    driver = webdriver.Firefox()
+    driver.get('https://www.baidu.com/')
+    # . 代表class     #代表id
+    try:
+
+        driver.find_element_by_xpath('//*[@id="kw"]').send_keys('selenium')
+        # driver.find_element_by_xpath('//input[id='kw' and class='s_ipt']').send_keys(''selenium)
+        driver.find_element_by_css_selector('#su').click()
+    except Exception:
+        print('error!')
+    print(driver.current_url)
+    print('successful!')
+    driver.close()
+
+def wanmen():
+    from selenium import webdriver
+    from time import sleep
+    driver = webdriver.Firefox()
+    driver.get('https://www.wanmen.org/')
+    # > 代表father元素
+    try:
+        driver.find_element_by_xpath('//i[contains(@data-value,"5")]').click()
+        # driver.find_element_by_xpath('//*[@id="root"]/div/div[3]/span/div/div[2]/form/div[1]/label/div/input').send_keys('15826861440')
+    # driver.find_element_by_css_selector('#root>div>div:nth-child(3)>span>div>div.containers__form--3eDpt>form>div:nth-child(2)>label>div>input')
+    # driver.find_element_by_css_selector('#root>div>div:nth-child(3)>span>div>div.containers__form--3eDpt>form>div.sign-in-form__submit-button--JBv9g>button').click()
+    except:
+        print('error!')
+    print("官网的网址是："+driver.current_url)
+    print('successful!')
+    driver.close()
+    sleep(10)
+    driver.quit()
+wanmen()
